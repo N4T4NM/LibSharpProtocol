@@ -5,7 +5,7 @@ using LibSharpProtocol.Core.Packets;
 
 namespace LibSharpProtocol.Protocol772.Packets.S2C.Play;
 
-[PacketInfo(0x2F, PacketDirection.C2S, ProtocolState.Play)]
+[PacketInfo(0x2F, PacketDirection.S2C, ProtocolState.Play)]
 public class S2CUpdateEntityPositionAndRotation : IPacket
 {
     public void Write(ProtocolStream stream) => throw new NotImplementedException();
