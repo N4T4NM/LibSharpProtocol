@@ -27,6 +27,8 @@ public class ChunkColumn(int sectionCount) : IProtocolSerializer
 
     public int GetState(int x, int y, int z)
     {
+        y = Math.Max(y, WorldBase);
+        
         int secIdx = (y - WorldBase) / ChunkSection.CHUNK_SECTION_HEIGHT;
         int localY = (y - WorldBase) % ChunkSection.CHUNK_SECTION_HEIGHT;
         
