@@ -15,6 +15,13 @@ public class ProtocolStream(Stream baseStream, bool leaveOpen) : Stream
         Write(data);
     }
     public void WriteUUID(UUID uuid) => Write(uuid.GetBuffer());
+
+    public void WriteVec3d(Vec3d vec)
+    {
+        WriteF64(vec.X);
+        WriteF64(vec.Y);
+        WriteF64(vec.Z);
+    }
     public void WriteArray<T>(T[] array, ArrayWriter<T> writer)
     {
         WriteVarInt(array.Length);
@@ -48,7 +55,7 @@ public class ProtocolStream(Stream baseStream, bool leaveOpen) : Stream
     public void WriteU16(ushort u16) => WritePrimitive(BinaryPrimitives.WriteUInt16BigEndian, u16, 0x02);
     public void WriteI64(long i64) => WritePrimitive(BinaryPrimitives.WriteInt64BigEndian, i64, 0x08);
     public void WriteF32(float f32) => WritePrimitive(BinaryPrimitives.WriteSingleBigEndian, f32, 0x04);
-
+    public void WriteF64(double f64) => WritePrimitive(BinaryPrimitives.WriteDoubleBigEndian, f64, 0x08);
     public void WritePrimitive<T>(PrimitiveWriter<T> writer, T value, int length)
     {
         byte[] buffer = new byte[length];
