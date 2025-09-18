@@ -8,7 +8,7 @@ public class Block
     public static Block Register(string name, JsonBlock json)
     {
         List<BlockState> states = new();
-        Block block = new(name, states);
+        Block block = new(name, json.Definition.Type, states);
         _blocks[block.Name] = block;
         
         foreach (var jsonState in json.States)
@@ -20,13 +20,15 @@ public class Block
         return block;
     }
 
-    internal Block(string name, IList<BlockState> states)
+    internal Block(string name, string type, IList<BlockState> states)
     {
         Name = name;
+        Type = type;
         States = new(states);
     }
     
     public string Name { get; }
+    public string Type { get; }
     public ReadOnlyCollection<BlockState> States { get; }
 
     private static readonly Dictionary<string, Block> _blocks = new();
