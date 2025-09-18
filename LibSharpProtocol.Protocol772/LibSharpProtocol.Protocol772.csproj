@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\LibSharpProtocol.Core\LibSharpProtocol.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Packets\C2S\" />
+    </ItemGroup>
+
+</Project>
