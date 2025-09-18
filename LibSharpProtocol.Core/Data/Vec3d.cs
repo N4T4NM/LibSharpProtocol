@@ -4,6 +4,9 @@ namespace LibSharpProtocol.Core.Data;
 
 public struct Vec3d(double x, double y, double z) : IEquatable<Vec3d>
 {
+    public static Vec3d operator +(Vec3d v1, Vec3d v2) => new(v1.X + v2.X, v1.Y + v2.Y, v1.Z + v2.Z);
+    public static Vec3d operator -(Vec3d v1, Vec3d v2) => new(v1.X - v2.X, v1.Y - v2.Y, v1.Z - v2.Z);
+    
     public bool Equals(Vec3d other)
     {
         return X.Equals(other.X) && Y.Equals(other.Y) && Z.Equals(other.Z);
